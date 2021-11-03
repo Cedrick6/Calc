@@ -23,32 +23,33 @@ public class CalcWindow {
     public void clearButtonPressed(){
         numberField.clear();
     }
+
+    @FXML
+    public void processNumber(){
+        var numberAsText = numberField.getText();
+        firstNumber = Double.parseDouble(numberAsText);
+        numberField.setText("");
+        //operation = OperatorType.Add;
+    }
+
     @FXML
     public void plusButtonPressed(){
-         var numberAsText = numberField.getText();
-         firstNumber = Double.parseDouble(numberAsText);
-         numberField.setText("");
+         processNumber();
          operation = OperatorType.Add;
     }
     @FXML
     public void multiplyButtonPressed(){
-        var numberAsText = numberField.getText();
-        firstNumber = Double.parseDouble(numberAsText);
-        numberField.setText("");
+        processNumber();
         operation = OperatorType.Multiply;
     }
     @FXML
     public void divideButtonPressed(){
-        var numberAsText = numberField.getText();
-        firstNumber = Double.parseDouble(numberAsText);
-        numberField.setText("");
+        processNumber();
         operation = OperatorType.Divide;
     }
     @FXML
     public void subtractButtonPressed(){
-        var numberAsText = numberField.getText();
-        firstNumber = Double.parseDouble(numberAsText);
-        numberField.setText("");
+        processNumber();
         operation = OperatorType.Subtract;
     }
     @FXML
