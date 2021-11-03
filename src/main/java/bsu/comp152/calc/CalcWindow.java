@@ -6,8 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class CalcWindow {
-    private long firstNumber;
-    //private long secondNumber;
+    private double firstNumber;
+    private OperatorType operation;
     @FXML
     private TextField numberField;
 
@@ -26,18 +26,44 @@ public class CalcWindow {
     @FXML
     public void plusButtonPressed(){
          var numberAsText = numberField.getText();
-         firstNumber = Long.parseLong(numberAsText);
+         firstNumber = Double.parseDouble(numberAsText);
          numberField.setText("");
+         operation = OperatorType.Add;
+    }
+    @FXML
+    public void multiplyButtonPressed(){
+        var numberAsText = numberField.getText();
+        firstNumber = Double.parseDouble(numberAsText);
+        numberField.setText("");
+        operation = OperatorType.Multiply;
+    }
+    @FXML
+    public void divideButtonPressed(){
+        var numberAsText = numberField.getText();
+        firstNumber = Double.parseDouble(numberAsText);
+        numberField.setText("");
+        operation = OperatorType.Divide;
+    }
+    @FXML
+    public void subtractButtonPressed(){
+        var numberAsText = numberField.getText();
+        firstNumber = Double.parseDouble(numberAsText);
+        numberField.setText("");
+        operation = OperatorType.Subtract;
     }
     @FXML
     public void equalButtonPressed(){
         var numberAsText = numberField.getText();
-        var secondNumber = Long.parseLong(numberAsText);
-        var result = secondNumber + firstNumber;
-        numberField.setText(""+result);
-        //or
-        //numberField.setText(String.valueOf(result));
-        
+        var secondNumber = Double.parseDouble(numberAsText);
+        var result = 0.0;
+        switch (operation){
+            case Add -> result = firstNumber + secondNumber;
+            case Divide -> result = (double) firstNumber / secondNumber;
+            case Multiply -> result = firstNumber * secondNumber;
+            case Subtract -> result = firstNumber - secondNumber;
+        }
+        numberField.setText(""+result); // or numberField.setText(String.valueOf(result));
+
     }
 
 
